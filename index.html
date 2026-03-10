@@ -78,7 +78,7 @@ body{
 ════════════════════════════════════════════════════════════ */
 
 /* ── Fontes LP ──────────────────────────────────────────── */
-/* Fonts loaded in <head> via <link> */
+/* Fonts loaded via <link> in <head> */
 
 /* ── Variáveis LP ───────────────────────────────────────── */
 :root{
@@ -3967,8 +3967,8 @@ function validatePin() {
 function startSession(user) {
   CUR_USER = user;
   if (user.role === 'cuidador') CUR_CG_ID = user.cgId;
-  const ls = document.getElementById('login-screen');
-  if (ls) ls.classList.add('hidden');
+  const _ls = document.getElementById('login-screen');
+  if (_ls) _ls.classList.add('hidden');
   document.getElementById('platform-wrap').classList.add('active');
   setupSidebar();
   renderNav();
@@ -3984,12 +3984,12 @@ function doLogout() {
   CUR_USER = CUR_FAM_ID = CUR_PAT_ID = CUR_CG_ID = null;
   PIN_ENTERED = '';
   document.getElementById('platform-wrap').classList.remove('active');
-  const ls = document.getElementById('login-screen');
-  if (ls) ls.classList.remove('hidden');
-  ['email-form','pin-form'].forEach(id => { const el=document.getElementById(id); if(el) el.style.display='none'; });
+  const _ls2 = document.getElementById('login-screen');
+  if (_ls2) _ls2.classList.remove('hidden');
+  ['email-form','pin-form'].forEach(id => { const el = document.getElementById(id); if(el) el.style.display='none'; });
   document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
-  const le = document.getElementById('login-err');
-  if (le) le.textContent = '';
+  const _le = document.getElementById('login-err');
+  if (_le) _le.textContent = '';
   goToLP();
 }
 
@@ -5692,17 +5692,17 @@ setTimeout(function() {
 }, 800);
 
 (function() {
-  if (typeof IntersectionObserver === 'undefined')    return;
-  var obs = new IntersectionObserver(function(entries) {
+  if (typeof IntersectionObserver === 'undefined')nObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.12 });
   document.querySelectorAll('.lp-anim').forEach(function(el) { obs.observe(el); });
 })();
+
 </script>
 </body>
 </html>
